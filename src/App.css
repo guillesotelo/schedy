@@ -1,38 +1,405 @@
-.App {
+*{
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.title-logo {
+  font-family:'Imperial Script', cursive;
+  font-size: 60px;
   text-align: center;
+  margin: 0.4vw 0 0 0;
+  text-shadow: 4px 4px rgb(215, 215, 215);
+}
+.subtitle {
+  margin: 0px;
+  text-align: center;
+  font-size: 1vw;
+  color:rgb(98, 98, 98)
+}
+.sub-subtitle {
+  margin: 0px;
+  /* margin-bottom: 3vw; */
+  text-align: center;
+  font-size: 0.8vw;
+  padding-bottom: 1vw;
+  box-shadow: 5px 5px 5px 1px rgb(239, 239, 239);
+  color:rgb(98, 98, 98)
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.div-btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sched-btn {
+  /* margin-top: 0.5vw; */
+  align-self: center;
+  border: none;
+  background-color: rgb(224, 243, 253);
+  box-shadow: 5px 5px 5px 1px rgb(239, 239, 239);
+  border-radius: 1vw;
+  height: 3vw;
+  padding: 1vw;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.sched-btn:hover {
+  background-color: rgb(202, 236, 255);
+}
+.sched-btn:active {
+  background-color: rgb(186, 189, 198);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.date-picker {
+  margin-bottom: 1vw;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.div-admin-btn {
+  display: flex;
+  flex-direction: column;
+}
+.admin-btn {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 3vw;
+  align-self: center;
+  border: none;
+  background-color: rgb(224, 243, 253);
+  box-shadow: 5px 5px 5px 1px rgb(239, 239, 239);
+  border-radius: 2vw;
+  padding: 1vw;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.admin-btn:hover {
+  background-color: rgb(202, 236, 255);
+}
+.admin-btn:active {
+  background-color: rgb(219, 219, 219);
+}
+
+
+.schedule-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1vw;
+}
+
+.login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* margin-top: 2vw; */
+}
+.schedule {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  width: fit-content;
+  /* border: 1px solid rgb(200, 200, 200); */
+  box-shadow: 3px 3px 20px rgb(209, 209, 209);
+  background-color: rgb(249, 249, 249);
+  border-radius: 2vw;
+  padding: 2vw;
+  margin-bottom: 1vw;
+  position: fixed;
+  z-index: 1;
+  top: 20%; 
+}
+.schedule-admin {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  width: fit-content;
+  /* border: 1px solid rgb(200, 200, 200); */
+  box-shadow: 3px 3px 20px rgb(209, 209, 209);
+  background-color: rgb(249, 249, 249);
+  border-radius: 2vw;
+  padding: 2vw;
+  margin-bottom: 1vw;
+  /* position: fixed; */
+  z-index: 1;
+  top: 20%; 
+}
+
+.date-scheduled {
+  margin: 1vw;
+  border: 2px solid gray;
+  padding: 1vw;
+  border-radius: 2vw;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: 1px solid rgb(200, 200, 200); */
+  box-shadow: 3px 3px 20px rgb(209, 209, 209);
+  background-color: rgb(249, 249, 249);
+  border-radius: 1.5vw;
+  width: fit-content;
+  /* bottom: 0; */
+  position: absolute;
+  top: 20%; 
+  /* margin-bottom: 3vw; */
+  padding: 1vw;
+}
+
+.enter-btn {
+  border: none;
+  background-color: rgb(224, 243, 253);
+  box-shadow: 5px 5px 5px 1px rgb(239, 239, 239);
+  border-radius: 1.5vw;
+  padding: 1vw;
+  margin-top: 1vw;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.enter-btn:hover {
+  background-color: rgb(202, 236, 255);
+}
+.enter-btn:active {
+  background-color: rgb(215, 215, 215);
+}
+
+.login-input {
+  border: 1px solid rgb(219, 219, 219);
+  border-radius: 1.5vw;
+  height: auto;
+  padding: 1vw;
+  margin: 0.5vw
+}
+
+.div-login-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5vw
+}
+
+.toast-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1vw;
+}
+.toast {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-radius: 1vw;
+  transition: 0.4s;
+  padding: 0vw 1vw;
+  gap: 1.5vw;
+  margin: 0;
+  background-color: rgb(180, 255, 177);
+  background-color: rgb(218, 255, 217);
+  position: fixed;
+  z-index: 2;
+}
+.x-btn {
+  border: none;
+  background-color: transparent;
+  font-size: 2vw;
+}
+
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.lds-hourglass {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  box-sizing: border-box;
+  border: 32px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+
+
+
+.week {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5vw;
+  text-align: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 0;
+  padding: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.day {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 11%;
+  border: 2px solid lightgray;
+  border-radius: 0.5vw;
+  padding-bottom: 1vw;
+  background-color: rgb(238, 238, 238);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.day-today {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 11%;
+  border: 2px solid lightgray;
+  border-radius: 0.5vw;
+  padding-bottom: 1vw;
+  background-color: rgb(150, 210, 193);
+}
+
+.day-before {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 11%;
+  border: 2px solid lightgray;
+  border-radius: 0.5vw;
+  padding-bottom: 1vw;
+  background-color: rgb(183, 187, 185);
+}
+
+.day-title {
+  font-size: medium;
+  margin: 0.7vw 0;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: lighter;
+}
+
+.div-month {
+  text-align: start;
+  margin-left: 9vw;
+}
+
+.month-title {
+  margin: 0px 0px 5px 0px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: normal;
+  color: rgb(98, 98, 98);
+}
+
+.section {
+  /* display: flex;
+  flex-direction: row;
+  justify-self: center; */
+}
+
+.section-text {
+  font-size: small;
+  margin: 0;
+  border: 1px solid rgb(182, 182, 182);
+  word-spacing: 0.6vw;
+  padding: 0.5vw;
+  color: rgb(83, 83, 83);
+}
+
+.section-text-before {
+  font-size: small;
+  margin: 0;
+  border: 1px solid rgb(182, 182, 182);
+  word-spacing: 0.6vw;
+  padding: 0.5vw;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: normal;
+}
+
+.section-btn {
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  height: 2vw;
+  transition: 0.3s;
+  color:rgb(45, 45, 45);
+}
+.section-btn:hover {
+  transform: scale(1.12);
+  cursor: pointer;
+  /* opacity: 0.8; */
+}
+
+.section-btn-taken {
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  height: 2vw;
+}
+
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  margin: 1vw;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1vw;
+}
+
+.arrow-right {
+  border: none;
+  background-color: rgb(224, 243, 253);
+  box-shadow: 5px 5px 5px 1px rgb(239, 239, 239);
+  border-radius: 2vw;
+  height: 3vw;
+  padding: 1vw;  
+  transition: 0.3s;
+  cursor: pointer;
+}
+.arrow-left {
+  border: none;
+  background-color: rgb(224, 243, 253);
+  box-shadow: 5px 5px 5px 1px rgb(239, 239, 239);
+  border-radius: 2vw;
+  height: 3vw;
+  padding: 1vw;  
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.arrow-right:hover {
+  background-color: rgb(202, 236, 255);
+}
+.arrow-right:active {
+  background-color: rgb(219, 219, 219);
+}
+.arrow-left:hover {
+  background-color: rgb(202, 236, 255);
+}
+.arrow-left:active {
+  background-color: rgb(219, 219, 219);
 }
