@@ -321,6 +321,15 @@
   word-spacing: 0.6vw;
   padding: 0.5vw;
   color: rgb(83, 83, 83);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.section-text:active {
+  transform: scale(1.5);
+  overflow: visible;
+  white-space: normal;
+  text-overflow: unset;
 }
 
 .section-text-before {
@@ -331,6 +340,15 @@
   padding: 0.5vw;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: normal;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.section-text-before:active {
+  transform: scale(1.5);
+  overflow: visible;
+  white-space: normal;
+  text-overflow: unset;
 }
 
 .section-btn {

@@ -9,7 +9,7 @@ router.post('/', async (req, res, next) => {
         if(!username || !password) res.status(400).send('Invalid inputs')
 
         const admin = await Admin.findOne({ username }).exec()
-        if(!admin) return res.status(401).send('Invalid credentials')
+        if(!admin) return res.status(401).json({})
 
         const compareRes = await admin.comparePassword(password)
         if(!compareRes) return res.status(401).send('Invalid credentials')

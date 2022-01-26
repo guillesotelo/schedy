@@ -18,7 +18,7 @@ export default function Schedule(props) {
         else if(schedule){
             setToastNotif(null)
             setLoading(true)
-            const saved = await dispatch(saveSchedule({...userData, schedule}))
+            const saved = await dispatch(saveSchedule({...userData, schedule})).then(data => data.payload)
             if(!saved) setToastNotif({type: 'error', message: `Algo salió mal. Intentá de nuevo, por favor`})
                 setToastNotif({type: 'info', message: `¡Cita confirmada! ${userData.email ? 'Se envió un mail con la info' : ''}`})
                 setScheduleOpen(false)

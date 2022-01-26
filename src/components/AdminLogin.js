@@ -22,15 +22,18 @@ export default function AdminLogin(props) {
     const checkIfAdmin = async () => {
         try {
             setLoading(true)
-            const isAdmin = await dispatch(logInAdmin(data))
+            const isAdmin = await dispatch(logInAdmin(data)).then(data => data.payload)
             if(isAdmin) {
                 setIsAdmin(true)
                 setToastNotif({type: 'info', message: 'Qué bueno verte de nuevo!'})
                 setTimeout(() => {
                     setToastNotif(null)
                 }, 2500)
+                setLoading(false)
+            } else {
+                setLoading(false)
+                setToastNotif({type: 'error', message: 'Datos no válidos'})
             }
-            setLoading(false)
         } catch(err) { console.log(err)}
     }
 
