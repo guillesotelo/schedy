@@ -31,7 +31,7 @@ function Home() {
 
     return (
         <div className="App">
-            <div>
+            <div className='div-title'>
                 <h1 className='title-logo'>Gerardo Losasso</h1>
                 <h3 className='subtitle'>Peluquería y Barbería</h3>
                 <h4 className='sub-subtitle'>~ Desde 1999 ~</h4>
@@ -104,6 +104,9 @@ function Home() {
                 isAdmin={isAdmin}
                 />
             }
+            <div className='div-footer'>
+                <a href='https://linkedin.com/in/guillermosotelo' target="_blank" className='footer'>Desarrollado por Guillermo Sotelo © 2022</a>
+            </div>
         </div>
     );
 }

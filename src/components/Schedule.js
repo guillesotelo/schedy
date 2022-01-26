@@ -25,7 +25,6 @@ export default function Schedule(props) {
         } else {
             setToastNotif({type: 'error', message: 'Datos de fecha/hora incorrectos'})
         }
-        console.log("Agendado:", schedule)
         setLoading(false)
     }
     

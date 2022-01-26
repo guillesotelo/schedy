@@ -60,7 +60,7 @@ export default function CalendarManagement(props) {
                                         <DatePicker
                                             selected={newSched.from || ''}
                                             onChange={(date) => {
-                                                console.log("Fecha:", date)
+                                                // console.log("Fecha:", date)
                                                 setNewSched({ ...newSched, from: date })
                                             }}
                                             showTimeSelect
@@ -76,7 +76,7 @@ export default function CalendarManagement(props) {
                                         <DatePicker
                                             selected={newSched.to || ''}
                                             onChange={(date) => {
-                                                console.log("Fecha:", date)
+                                                // console.log("Fecha:", date)
                                                 setNewSched({ ...newSched, to: date })
                                             }}
                                             showTimeSelect
@@ -103,7 +103,7 @@ export default function CalendarManagement(props) {
                                         <DatePicker
                                             selected={newSched.from || ''}
                                             onChange={(date) => {
-                                                console.log("Fecha:", date)
+                                                // console.log("Fecha:", date)
                                                 setNewSched({ ...newSched, from: date })
                                             }}
                                             showTimeSelect
@@ -119,7 +119,7 @@ export default function CalendarManagement(props) {
                                         <DatePicker
                                             selected={newSched.to || ''}
                                             onChange={(date) => {
-                                                console.log("Fecha:", date)
+                                                // console.log("Fecha:", date)
                                                 setNewSched({ ...newSched, to: date })
                                             }}
                                             showTimeSelect
