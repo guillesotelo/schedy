@@ -193,8 +193,7 @@ export default function Calendar(props) {
                           backgroundColor: section.is_taken
                             ? "rgb(205, 205, 205)"
                             : "rgb(227, 255, 226)",
-                            fontSize: isAdmin && section.is_taken && 9,
-                            "&:hover": 'transform(scale(1.5))'
+                            fontSize: isAdmin && section.is_taken && 9
                         }}
                         className="section-text-before"
                       >
