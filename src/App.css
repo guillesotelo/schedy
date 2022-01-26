@@ -2,9 +2,17 @@
   font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.App {
+  background-image: url(../public/bg-losasso_C.jpg);
+  background-repeat: repeat;
+  background-size: 300px 300px;
+}
+.div-title {
+  background-color:rgb(255, 255, 255)
+}
 .title-logo {
   font-family:'Imperial Script', cursive;
-  font-size: 60px;
+  font-size: 55px;
   text-align: center;
   margin: 0.4vw 0 0 0;
   text-shadow: 4px 4px rgb(215, 215, 215);
@@ -297,8 +305,7 @@
 }
 
 .div-month {
-  text-align: start;
-  margin-left: 9vw;
+  text-align: center;
 }
 
 .month-title {
@@ -306,12 +313,6 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: normal;
   color: rgb(98, 98, 98);
-}
-
-.section {
-  /* display: flex;
-  flex-direction: row;
-  justify-self: center; */
 }
 
 .section-text {
@@ -329,7 +330,8 @@
   transform: scale(1.5);
   overflow: visible;
   white-space: normal;
-  text-overflow: unset;
+  /* text-overflow: unset; */
+  height: fit-content;
 }
 
 .section-text-before {
@@ -349,6 +351,7 @@
   overflow: visible;
   white-space: normal;
   text-overflow: unset;
+  height: fit-content;
 }
 
 .section-btn {
@@ -379,6 +382,7 @@
   display: flex;
   flex-direction: column;
   margin: 1vw;
+  margin-bottom: 0.5vw;
 }
 
 .arrows {
@@ -420,4 +424,194 @@
 }
 .arrow-left:active {
   background-color: rgb(219, 219, 219);
+}
+
+.div-footer {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+}
+.footer {
+  align-self: center;
+  text-decoration: none;
+  color:rgb(178, 178, 178);
+  margin: 0vw;
+  font-size: 1vw;
+  font-style: italic;
+  background-color: transparent;
+}
+
+
+
+
+/* ---- MOBILE ---- */
+@media only screen and (max-width: 640px) {
+  .App {
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    height: fit-content;
+  }
+  .title-logo {
+    font-size: 40px;
+    margin: 3vw 0 0 0;
+  }
+  .subtitle {
+    margin: 0px;
+    font-size: 2.5vw;
+  }
+  .sub-subtitle {
+    margin: 0px;
+    text-align: center;
+    font-size: 2vw;
+    padding-bottom: 4vw;
+    box-shadow: 5px 5px 5px 1px rgb(239, 239, 239);
+    color:rgb(98, 98, 98)
+  }
+  .admin-btn {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 2vw;
+    font-size: 3vw;
+    opacity: 0.3;
+    align-self: center;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0vw;
+  }
+  .login-box {
+    height: fit-content;
+    padding: 5vw;
+    border-radius: 3vw;
+    box-shadow: 3px 3px 20px rgb(54, 54, 54);
+    color: rgb(71, 71, 71);
+  }
+  .login-input {
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 2vw;
+    height: auto;
+    padding: 3vw;
+    margin: 2vw
+  }
+  .enter-btn {
+    box-shadow: 5px 5px 5px 1px rgb(215, 215, 215);
+    border-radius: 2vw;
+    padding: 3vw;
+    margin: 3vw;
+    margin-top: 4vw;
+  }
+  .toast-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1vw;
+  }
+  .toast {
+    border-radius: 2vw;
+    padding: 0vw 5vw;
+    gap: 4vw;
+  }
+  .x-btn {
+    font-size: 4.5vw;
+  }
+  .arrows {
+    margin: 5vw;
+  }
+  .arrow-right {
+    height: 10vw;
+    width: 25vw;
+    font-size: 3vw;
+    color: rgb(71, 71, 71);
+    background-color: rgb(224, 243, 253);
+  }
+  .arrow-left {
+    height: 10vw;
+    width: 25vw;
+    font-size: 3vw;
+    color: rgb(71, 71, 71);
+    background-color: rgb(224, 243, 253);
+  }
+  .sched-btn {
+    width: 80px;
+    height: fit-content;
+    background-color: rgb(177, 224, 251);
+    font-size: 3vw;
+    padding: 1.5vw;
+    color: rgb(71, 71, 71);
+  }
+  .schedule-admin {
+    /* position: absolute;
+    top: 20%;  */
+    text-align: center;
+    padding: 5vw;
+    font-size: 4vw;
+    color: rgb(71, 71, 71);
+  }
+  .div-month {
+    text-align: center;
+    margin: 0
+  }
+  .calendar {
+    background-color: transparent;
+    margin-bottom: 10vw;
+  }
+  .week {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: transparent;
+  }
+  .day {
+    display: inline-block;
+    flex: 1 1 30%;
+    height: fit-content;
+    width: 80px;
+    margin: 0.5vw;
+    margin-bottom: 1vw;
+    border-radius: 1.5vw;
+  }
+  .day-before {
+    display: inline-block;
+    height: 300px;
+    width: 80px;
+    margin-bottom: 1vw;
+    border-radius: 1.5vw;
+  }
+  .day-today {
+    display: inline-block;
+    height: 300px;
+    width: 80px;
+    margin-bottom: 1vw;
+    border-radius: 1.5vw;
+  }
+  .day-title {
+    font-size: 3vw;
+  }
+  .section-text {
+    font-size: 2.3vw;
+    height: 10px;
+    padding: 1vw;
+  }
+  .section-text-before {
+    font-size: 2.3vw;
+    height: 10px;
+    padding: 1vw;
+  }
+  .schedule {
+    text-align: center;
+    padding: 7vw;
+    font-size: 4vw;
+    color: rgb(71, 71, 71);
+  }
+    .footer {
+    align-self: center;
+    text-decoration: none;
+    color:rgb(178, 178, 178);
+    margin-bottom: 5vw;
+    font-size: 3vw;
+    font-style: italic;
+    background-color: transparent;
+  }
 }

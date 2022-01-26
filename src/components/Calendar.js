@@ -15,9 +15,9 @@ export default function Calendar(props) {
   useEffect(() => {
     getAllScehdules()
     organizeDays()
-    console.log("weekData", weekData)
-    console.log("data", data)
-    console.log("Is Admin --> ", isAdmin)
+    // console.log("weekData", weekData)
+    // console.log("data", data)
+    // console.log("Is Admin --> ", isAdmin)
   },[weekNumber, data.length])
 
   const compareSchedules = dateToCheck => {
@@ -159,8 +159,8 @@ export default function Calendar(props) {
     }
   };
 
-  const month = weekData.length && weekData[0].sections[0].date.toLocaleString('default', { month: 'long'}).toUpperCase()
-  const year = weekData.length && weekData[0].sections[0].date.getFullYear()
+  const month = weekData.length && weekData[3].sections[0].date.toLocaleString('default', { month: 'long'}).toUpperCase()
+  const year = weekData.length && weekData[3].sections[0].date.getFullYear()
 
   return (
     <div className="calendar-container">
@@ -170,6 +170,7 @@ export default function Calendar(props) {
         </div>
         <div className="week">
           {weekData.map(({day}, i) => (
+            i > 0 &&
             <div key={i} className={
               weekData[i].sections[0].date.getDate() === new Date().getDate() 
               && weekData[i].sections[0].date.getDay() === new Date().getDay() ? 'day-today' 
