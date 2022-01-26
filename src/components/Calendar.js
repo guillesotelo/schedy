@@ -193,10 +193,12 @@ export default function Calendar(props) {
                           backgroundColor: section.is_taken
                             ? "rgb(205, 205, 205)"
                             : "rgb(227, 255, 226)",
+                            fontSize: isAdmin && section.is_taken && 9,
+                            "&:hover": 'transform(scale(1.5))'
                         }}
                         className="section-text-before"
                       >
-                        {isAdmin && section.is_taken ? section.name : section.hour} {section.is_taken ? "" : "Libre"}
+                        {isAdmin && section.is_taken ? section.hour+' '+section.name : section.hour} {section.is_taken ? "" : "Libre"}
                       </h4>
                     </div>
                   </button>
@@ -216,10 +218,11 @@ export default function Calendar(props) {
                           backgroundColor: section.is_taken
                             ? "rgb(205, 205, 205)"
                             : "rgb(227, 255, 226)",
+                            fontSize: isAdmin && section.is_taken && 9
                         }}
                         className="section-text"
                       >
-                        {section.hour} {section.is_taken ? "" : "Libre"}
+                        {isAdmin && section.is_taken ? section.hour+' '+section.name : section.hour} {section.is_taken ? "" : "Libre"}
                       </h4>
                     </div>
                   </button>

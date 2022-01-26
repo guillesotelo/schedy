@@ -39,6 +39,7 @@ export default function CalendarManagement(props) {
         <div className='schedule-container'>
                 {loading ? <Loading/> :
                     <div className='schedule-admin'>
+                        <h4 onClick={()=>setManageOpen(false)} style={{ alignSelf: 'flex-end', margin: 0, cursor: 'pointer' }}>X</h4>
                         <div>
                             <h3>{screen.ocupate ? 'Ocupar Agenda' : screen.free ? 'Liberar Agenda' : 'Modificar Calendario'}</h3>
                         </div>

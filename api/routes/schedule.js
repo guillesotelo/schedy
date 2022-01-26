@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         const { name, email, schedule, isAdmin, from, to, ocupate, free} = req.body
-        console.log("BODY",req.body)
+        console.log("BODY",req.body)//this log is a bugfixer
         console.log("new Date(from)", new Date(from))//this log is a bugfixer
 
         if(isAdmin){
@@ -35,8 +35,13 @@ router.post('/', async (req, res, next) => {
                 if(schedArr.length){
                     let response = []
                     for(let i=0 ; i<schedArr.length ; i++){
-                        const modified = ocupate ? await Schedules.create({ name: 'admin', schedule: schedArr[i]})
-                        : free ? await Schedules.find({ schedule: schedArr[i] }).remove().exec() : {}
+                        let modified = {}
+                        if(ocupate){
+                            const exists = await Schedules.findOne({ schedule: schedArr[i] }).exec()
+                            if(!exists) modified = await Schedules.create({ name: 'admin', schedule: schedArr[i]})
+                        } else if(free){
+                            modified = await Schedules.find({ schedule: schedArr[i] }).remove().exec()
+                        }
                         response.push(modified)
                     }
                     res.status(200).json({response})
@@ -48,7 +53,6 @@ router.post('/', async (req, res, next) => {
             let scheduled = await Schedules.findOne({ schedule }).exec()
             if(scheduled) return res.status(409).send('Conflict: schedule already exists')
 
-            // const date = 'DD/MM/YYYY'
             const newSchedule = await Schedules.create({ name, email, schedule })
 
             //Schedule mailing
@@ -61,7 +65,7 @@ router.post('/', async (req, res, next) => {
                         `<h3> Hola, ${name.split(' ')[0]}! <br/> 
                         Tu cita en la peluquería de Gerardo Losasso fué agendada exitosamente para el día:</h3>
                         <h2>${moment(schedule).locale("es").format('LLL')} Hs</h2> <br/>
-                        <h3>Si necesitás cancelarla, hacé click <a href="schedyapp.herokuapp.com/api/schedule/cancel&id=${newSchedule.id}&isMailing=1">acá</a>.</h3><br/>
+                        <h3>Si necesitás cancelarla, hacé click <a href="https://schedy-app.herokuapp.com/api/schedule/cancel?id=${newSchedule.id}&useremail=${email}&username=${name}&isMailing=1">acá</a>.</h3><br/>
                         <img width="200" height="auto" src="https://i.ibb.co/dMY6Xcs/Captura-de-Pantalla-2021-12-19-a-la-s-15-41-10.png" alt="Gerardo Losasso"/>`
                 }).catch(() => res.status(400).json({ message: 'Something went wrong!' }))
             }
@@ -87,7 +91,7 @@ router.post('/', async (req, res, next) => {
 //Cancel Schedule
 router.post('/cancel', async (req, res, next) => {
     try {
-        const { id, isMailing } = req.params
+        const { id, isMailing, useremail, username } = req.params
 
         const schedule = await Schedules.find({ id }).remove().exec()
         if(!schedule) return res.status(404).send('Schedule not found.')
@@ -100,6 +104,19 @@ router.post('/cancel', async (req, res, next) => {
                 subject: 'Corte de pelo cancelado!',
                 html: 
                     `<h3> Hola! <br/> 
+                    Cancelaron una cita en la peluquería.</h3> <br/>
+                    <h4>Nombre: ${username ? username : 'Sin datos'}</h4>
+                    <h4>Email: ${useremail ? useremail : 'Sin datos'}</h4> <br/>
+                    <img width="200" height="auto" src="https://i.ibb.co/dMY6Xcs/Captura-de-Pantalla-2021-12-19-a-la-s-15-41-10.png" alt="Gerardo Losasso"/>`
+                }).catch(() => res.status(400).json({ message: 'Something went wrong!' }))
+        }
+        if(useremail){
+            transporter.sendMail({
+                from: `"Gerardo Losasso" <${process.env.EMAIL}>`,
+                to: useremail,
+                subject: 'Corte de pelo cancelado!',
+                html: 
+                    `<h3> Hola${username && ', ' + username.split(' ')[0]}! <br/> 
                     Tu cita en la peluquería de Gerardo Losasso fué cancelada exitosamente.</h3> <br/>
                     <img width="200" height="auto" src="https://i.ibb.co/dMY6Xcs/Captura-de-Pantalla-2021-12-19-a-la-s-15-41-10.png" alt="Gerardo Losasso"/>`
                 }).catch(() => res.status(400).json({ message: 'Something went wrong!' }))
